@@ -18,11 +18,11 @@ public class GameView extends SurfaceView implements Runnable{
     Canvas canvas;
     Paint paint;
 
-    Long fps = (Long)2.0;
+    double fps = 2.0;
 
     private Long timeThisFrame;
 
-    Enemy[] enemies;
+    Enemy [] enemies;
     int enemyCount = 2;
 
     public GameView(Context context){
@@ -39,7 +39,7 @@ public class GameView extends SurfaceView implements Runnable{
 
         playing = true;
 
-        enemies = new Enemy(enemyCount);
+//        enemies = new Enemy(enemyCount);
         for(int i=0; i<enemyCount; i++){
             enemies[i] = new Enemy(context, screenWid, screenHeight, i);
         }

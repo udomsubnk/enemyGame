@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class Enemy {
     private String TAG = "mx enemy";
-    private static final float ICON_WIDTH_DIVIDE_FACTOR = 4.25;
+    private static final float ICON_WIDTH_DIVIDE_FACTOR = (float) 4.25;
     private Bitmap bitmap;
 
     private int x;
