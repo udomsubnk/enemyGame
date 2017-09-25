@@ -62,6 +62,11 @@ public class GameView extends SurfaceView implements Runnable{
 
     public void update(){
         Log.d(TAG, "working in update ");
+
+        int movingSpeed = 10;
+        for(int i=0; i<enemyCount; i++){
+            enemies[i].update(movingSpeed);
+        }
     }
     public void draw(){
         Log.d(TAG, "working in draw");
