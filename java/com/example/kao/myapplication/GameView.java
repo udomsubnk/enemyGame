@@ -18,7 +18,7 @@ public class GameView extends SurfaceView implements Runnable{
     Canvas canvas;
     Paint paint;
 
-    Long fps = (Long) 2.0;
+    Long fps = (Long)2.0;
 
     private Long timeThisFrame;
 
@@ -38,6 +38,7 @@ public class GameView extends SurfaceView implements Runnable{
         paint = new Paint();
 
         playing = true;
+
         enemies = new Enemy(enemyCount);
         for(int i=0; i<enemyCount; i++){
             enemies[i] = new Enemy(context, screenWid, screenHeight, i);
@@ -70,6 +71,16 @@ public class GameView extends SurfaceView implements Runnable{
             paint.setColor(Color.argb(255, 245, 129, 0));
             paint.setTextSize(30);
             canvas.drawText("FPS : "+ fps, 20, 40, paint);
+
+            for(int i=0; i<enemyCount; i++){
+                canvas.drawBitmap(
+                        enemies[i].getBitmap(),
+                        enemies[i].getX(),
+                        enemies[i].getY(),
+                        paint
+                );
+            }
+
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
     }

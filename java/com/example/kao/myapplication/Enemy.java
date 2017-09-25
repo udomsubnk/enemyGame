@@ -3,6 +3,7 @@ package com.example.kao.myapplication;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.DisplayMetrics;
 
 import java.util.Random;
 
@@ -12,7 +13,8 @@ import java.util.Random;
 
 public class Enemy {
     private String TAG = "mx enemy";
-    private String bitmap;
+    private static final float ICON_WIDTH_DIVIDE_FACTOR = 4.25;
+    private Bitmap bitmap;
 
     private int x;
     private int y;
@@ -26,13 +28,21 @@ public class Enemy {
 
         bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.enemy);
 
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        int scrWidth = metrics.widthPixels;
+        int iconW = (int)(scrWidth / ICON_WIDTH_DIVIDE_FACTOR);
+        int bmpW = bitmap.getWidth();
+        float scaleFactor = (float) iconW/bmpW;
+        
+        bitmap = Bitmap.createScaledBitmap(bitmap, iconW, (int)(bitmap.getHeight() * scaleFactor), true);
+
         Random generator = new Random();
         x = generator.nextInt(maxX);
         y = generator.nextInt(maxY);
     }
 
     public Bitmap getBitmap(){
-        return Bitmap;
+        return bitmap;
     }
 
     public int getX(){
