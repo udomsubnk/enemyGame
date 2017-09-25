@@ -22,6 +22,9 @@ public class GameView extends SurfaceView implements Runnable{
 
     private Long timeThisFrame;
 
+    Enemy[] enemies;
+    int enemyCount = 2;
+
     public GameView(Context context){
         super(context);
     }
@@ -35,6 +38,10 @@ public class GameView extends SurfaceView implements Runnable{
         paint = new Paint();
 
         playing = true;
+        enemies = new Enemy(enemyCount);
+        for(int i=0; i<enemyCount; i++){
+            enemies[i] = new Enemy(context, screenWid, screenHeight, i);
+        }
     }
 
     @Override
