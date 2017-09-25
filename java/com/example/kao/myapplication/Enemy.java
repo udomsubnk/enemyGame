@@ -33,12 +33,19 @@ public class Enemy {
         int iconW = (int)(scrWidth / ICON_WIDTH_DIVIDE_FACTOR);
         int bmpW = bitmap.getWidth();
         float scaleFactor = (float) iconW/bmpW;
-        
+
         bitmap = Bitmap.createScaledBitmap(bitmap, iconW, (int)(bitmap.getHeight() * scaleFactor), true);
 
         Random generator = new Random();
         x = generator.nextInt(maxX);
         y = generator.nextInt(maxY);
+    }
+
+    public void update(int playerSpeed){
+        y += playerSpeed;
+        if(y > maxY - bitmap.getHeight()){
+            y = 0;
+        }
     }
 
     public Bitmap getBitmap(){
